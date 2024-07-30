@@ -21,17 +21,17 @@ app.post('/saveLocation', async (req, res) => {
   coordinates = { latitude, longitude };
 
   try {
-    const response = await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
-    const placeName = response.data.display_name;
+    // const response = await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
+    // const placeName = response.data.display_name;
 
-    const newLocation = { latitude, longitude,placeName, timestamp: new Date() };
+    const newLocation = { latitude, longitude, timestamp: new Date() };
     locations.push(newLocation);
     saveLocationsToFile();
     console.log('Location received :',placeName);
     res.json({ status: 'Location received', location: newLocation }); //to send response to App
   } catch (error) {
     console.error('Error fetching place name:', error);
-    res.status(500).json({ error: 'Error fetching place name' });
+    res.status(500).json({ error: 'Error fetching ' });
   }
 });
 
