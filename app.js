@@ -1,3 +1,6 @@
+// https://node-server-0zpg.onrender.com
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -21,7 +24,7 @@ app.post('/saveLocation', async (req, res) => {
     const response = await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
     const placeName = response.data.display_name;
 
-    const newLocation = { latitude, longitude, timestamp: new Date() };
+    const newLocation = { latitude, longitude,placeName, timestamp: new Date() };
     locations.push(newLocation);
     saveLocationsToFile();
     console.log('Location received :',placeName);
