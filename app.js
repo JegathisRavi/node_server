@@ -27,7 +27,7 @@ app.post('/saveLocation', async (req, res) => {
     const newLocation = { latitude, longitude, timestamp: new Date() };
     locations.push(newLocation);
     saveLocationsToFile();
-    console.log('Location received :',placeName);
+    console.log('Location received :');
     res.json({ status: 'Location received', location: newLocation }); //to send response to App
   } catch (error) {
     console.error('Error fetching place name:', error);
